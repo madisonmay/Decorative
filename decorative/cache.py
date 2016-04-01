@@ -59,6 +59,7 @@ def cache(max_size=None):
     """
 
     lru_cache = QueueDict(max_size=max_size)
+    
     @decorator
     def wrapper(fn, *args, **kwargs):
 
