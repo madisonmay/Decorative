@@ -59,7 +59,7 @@ def cache(max_size=None):
     """
 
     lru_cache = QueueDict(max_size=max_size)
-    
+
     @decorator
     def wrapper(fn, *args, **kwargs):
 
@@ -74,9 +74,10 @@ def cache(max_size=None):
             )
 
         try:
+            # results are cached
             return lru_cache[hashed]
         except KeyError:
-            # result of function call not cached
+            # results not cached
             value = fn(*args, **kwargs)
             lru_cache[hashed] = value
             return value
